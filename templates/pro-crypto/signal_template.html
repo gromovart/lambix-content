@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 600px;
+  background: #0D0D0D;
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+/* HEADER */
+.header {
+  padding: 24px 28px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.coin-info { display: flex; align-items: center; gap: 14px; }
+.coin-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #F59E0B;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800; color: #0D0D0D;
+}
+.coin-name { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+.coin-pair { font-size: 13px; color: #6B7280; margin-top: 2px; }
+.direction {
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 18px; font-weight: 800;
+  letter-spacing: 2px;
+}
+.long  { background: #052e16; color: #22c55e; border: 1.5px solid #16a34a; }
+.short { background: #2d0d0d; color: #ef4444; border: 1.5px solid #dc2626; }
+
+/* CHART AREA */
+.chart {
+  margin: 0 28px;
+  height: 160px;
+  background: #141414;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.chart svg { width: 100%; height: 100%; }
+
+/* SIGNAL BADGE */
+.signal-badge {
+  position: absolute;
+  top: 10px; left: 12px;
+  background: #F59E0B;
+  color: #0D0D0D;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 2px;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+/* ENTRY LINE LABEL */
+.entry-label {
+  position: absolute;
+  right: 10px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px; color: #F59E0B; font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 16px 28px;
+}
+.stat {
+  background: #141414;
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid #1F1F1F;
+}
+.stat-label {
+  font-size: 10px; color: #6B7280;
+  font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.stat-value {
+  font-size: 18px; font-weight: 700; color: #FFFFFF;
+}
+.stat-value.green { color: #22c55e; }
+.stat-value.red   { color: #ef4444; }
+.stat-value.orange { color: #F59E0B; }
+
+/* TAKE PROFITS */
+.tps {
+  margin: 0 28px;
+  background: #141414;
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid #1F1F1F;
+}
+.tps-label {
+  font-size: 10px; color: #6B7280;
+  font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.tp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #1F1F1F;
+}
+.tp-row:last-child { border-bottom: none; }
+.tp-num { font-size: 11px; color: #6B7280; font-weight: 600; width: 24px; }
+.tp-price { font-size: 15px; font-weight: 700; color: #22c55e; }
+.tp-rr { font-size: 11px; color: #6B7280; }
+
+/* FOOTER */
+.footer {
+  padding: 14px 28px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.exchange {
+  font-size: 11px; color: #6B7280;
+  font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.channel {
+  font-size: 11px; color: #F59E0B;
+  font-weight: 700; letter-spacing: 1px;
+}
+.risk-note {
+  font-size: 10px; color: #374151;
+  padding: 0 28px 16px;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="coin-info">
+    <div class="coin-icon">₿</div>
+    <div>
+      <div class="coin-name">BTC</div>
+      <div class="coin-pair">BTCUSDT · Фьючерс</div>
+    </div>
+  </div>
+  <div class="direction long">LONG ▲</div>
+</div>
+
+<!-- CHART -->
+<div class="chart">
+  <svg viewBox="0 0 544 160" preserveAspectRatio="none">
+    <!-- Candles -->
+    <!-- Wicks -->
+    <line x1="30"  y1="110" x2="30"  y2="85"  stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="60"  y1="120" x2="60"  y2="90"  stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="90"  y1="105" x2="90"  y2="75"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="120" y1="95"  x2="120" y2="65"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="150" y1="100" x2="150" y2="72"  stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="180" y1="108" x2="180" y2="78"  stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="210" y1="90"  x2="210" y2="55"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="240" y1="80"  x2="240" y2="50"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="270" y1="85"  x2="270" y2="55"  stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="300" y1="75"  x2="300" y2="40"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="330" y1="65"  x2="330" y2="35"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="360" y1="70"  x2="360" y2="42"  stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="390" y1="60"  x2="390" y2="30"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="420" y1="55"  x2="420" y2="25"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="450" y1="62"  x2="450" y2="32"  stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="480" y1="50"  x2="480" y2="20"  stroke="#22c55e" stroke-width="1.5"/>
+    <line x1="510" y1="45"  x2="510" y2="18"  stroke="#22c55e" stroke-width="1.5"/>
+
+    <!-- Bodies -->
+    <rect x="22"  y="95"  width="16" height="15" rx="2" fill="#ef4444"/>
+    <rect x="52"  y="100" width="16" height="18" rx="2" fill="#ef4444"/>
+    <rect x="82"  y="78"  width="16" height="20" rx="2" fill="#22c55e"/>
+    <rect x="112" y="68"  width="16" height="22" rx="2" fill="#22c55e"/>
+    <rect x="142" y="76"  width="16" height="18" rx="2" fill="#ef4444"/>
+    <rect x="172" y="83"  width="16" height="18" rx="2" fill="#ef4444"/>
+    <rect x="202" y="60"  width="16" height="22" rx="2" fill="#22c55e"/>
+    <rect x="232" y="54"  width="16" height="20" rx="2" fill="#22c55e"/>
+    <rect x="262" y="60"  width="16" height="18" rx="2" fill="#ef4444"/>
+    <rect x="292" y="44"  width="16" height="24" rx="2" fill="#22c55e"/>
+    <rect x="322" y="38"  width="16" height="20" rx="2" fill="#22c55e"/>
+    <rect x="352" y="46"  width="16" height="18" rx="2" fill="#ef4444"/>
+    <rect x="382" y="34"  width="16" height="20" rx="2" fill="#22c55e"/>
+    <rect x="412" y="28"  width="16" height="20" rx="2" fill="#22c55e"/>
+    <rect x="442" y="36"  width="16" height="20" rx="2" fill="#ef4444"/>
+    <rect x="472" y="22"  width="16" height="22" rx="2" fill="#22c55e"/>
+    <rect x="502" y="20"  width="16" height="18" rx="2" fill="#22c55e"/>
+
+    <!-- Entry line -->
+    <line x1="0" y1="88" x2="544" y2="88" stroke="#F59E0B" stroke-width="1" stroke-dasharray="6,4"/>
+  </svg>
+  <div class="signal-badge">СИГНАЛ</div>
+  <div class="entry-label">ВХОД</div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-label">Точка входа</div>
+    <div class="stat-value orange">$103 500</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Стоп-лосс</div>
+    <div class="stat-value red">$101 000</div>
+  </div>
+</div>
+
+<!-- TAKE PROFITS -->
+<div class="tps">
+  <div class="tps-label">Тейк-профиты</div>
+  <div class="tp-row">
+    <span class="tp-num">TP1</span>
+    <span class="tp-price">$105 500</span>
+    <span class="tp-rr">R:R 1:0.8</span>
+  </div>
+  <div class="tp-row">
+    <span class="tp-num">TP2</span>
+    <span class="tp-price">$108 000</span>
+    <span class="tp-rr">R:R 1:1.8</span>
+  </div>
+  <div class="tp-row">
+    <span class="tp-num">TP3</span>
+    <span class="tp-price">$112 000</span>
+    <span class="tp-rr">R:R 1:3.4</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="exchange">Bybit · Фьючерс</span>
+  <span class="channel">@pro_crypto_trading</span>
+</div>
+<div class="risk-note">Это не финансовая рекомендация. Торгуй на свой риск.</div>
+
+</body>
+</html>
