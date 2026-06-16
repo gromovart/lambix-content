@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 600px;
+  height: 600px;
+  background: #000910;
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 36px;
+}
+
+/* decorative diagonal lines, top-right */
+.deco {
+  position: absolute;
+  top: 0; right: 0;
+  width: 280px; height: 280px;
+}
+.deco svg { width: 100%; height: 100%; }
+
+.label {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 28px;
+}
+.label-lines { display: flex; flex-direction: column; gap: 4px; }
+.label-lines span { display: block; height: 3px; border-radius: 2px; background: #FF4A17; }
+.label-lines span:first-child { width: 28px; }
+.label-lines span:last-child  { width: 18px; }
+.label-text {
+  font-size: 11px; font-weight: 700;
+  color: #FF4A17; letter-spacing: 3px; text-transform: uppercase;
+}
+
+.tag {
+  display: inline-block;
+  background: #0A1520;
+  border: 1px solid #1A2733;
+  color: #FF4A17;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 44px; font-weight: 800;
+  line-height: 1.12; color: #FFFFFF;
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 2;
+}
+.title .accent { color: #FF4A17; }
+
+.handle {
+  position: absolute;
+  bottom: 40px; left: 36px;
+  font-size: 13px; font-weight: 600;
+  color: #FF4A17; letter-spacing: 1px; text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="deco">
+  <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+    <line x1="280" y1="0" x2="60" y2="220" stroke="#FF4A17" stroke-width="3" opacity="0.9"/>
+    <line x1="280" y1="40" x2="100" y2="280" stroke="#FF4A17" stroke-width="3" opacity="0.5"/>
+    <line x1="280" y1="80" x2="140" y2="280" stroke="#1A2733" stroke-width="3" opacity="0.8"/>
+  </svg>
+</div>
+
+<div class="label">
+  <div class="label-lines"><span></span><span></span></div>
+  <div class="label-text">Lambix AI</div>
+</div>
+
+<div class="tag">{РУБРИКА}</div>
+
+<div class="title">{ЗАГОЛОВОК}</div>
+
+<div class="handle">@lambix_ai</div>
+
+</body>
+</html>
