@@ -1,0 +1,33 @@
+name: Deploy templates
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'templates/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH
+        env:
+          JARVES_SSH_KEY: ${{ secrets.JARVES_SSH_KEY }}
+          JARVES_SERVER_IP: ${{ secrets.JARVES_SERVER_IP }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$JARVES_SSH_KEY" > ~/.ssh/jarves
+          chmod 600 ~/.ssh/jarves
+          ssh-keyscan -H "$JARVES_SERVER_IP" >> ~/.ssh/known_hosts
+
+      - name: Sync templates
+        env:
+          JARVES_SERVER_IP: ${{ secrets.JARVES_SERVER_IP }}
+        run: |
+          ssh -i ~/.ssh/jarves root@"$JARVES_SERVER_IP" \
+            "mkdir -p /opt/claude-telegram-bot/content-plans"
+          rsync -av --delete -e "ssh -i ~/.ssh/jarves" \
+            templates/ \
+            root@"$JARVES_SERVER_IP":/opt/claude-telegram-bot/content-plans/
