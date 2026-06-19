@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: #0D0D0D; }
+body {
+  width: 100%;
+  background: #0D0D0D;
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  color: #FFFFFF;
+  padding: 28px 28px 24px;
+}
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.label { font-size: 11px; font-weight: 700; color: #F59E0B; letter-spacing: 3px; }
+.day-badge { background: #F59E0B; color: #0D0D0D; font-size: 11px; font-weight: 800; letter-spacing: 2px; padding: 6px 14px; border-radius: 6px; }
+.title { font-size: 38px; font-weight: 800; line-height: 1.08; letter-spacing: -0.5px; margin-bottom: 6px; }
+.title .accent { color: #F59E0B; }
+.date { font-size: 12px; font-weight: 600; color: #6B7280; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+.divider { width: 100%; height: 1px; background: #2E2E2E; margin-bottom: 18px; }
+.balance-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+.bal-val { font-size: 36px; font-weight: 800; }
+.bal-today { font-size: 16px; font-weight: 700; }
+.bal-from-start { font-size: 12px; color: #6B7280; margin-bottom: 16px; }
+.bal-accent { font-weight: 700; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.stat { background: #141414; border: 1px solid #1F1F1F; border-radius: 10px; padding: 14px; }
+.stat-label { font-size: 10px; color: #6B7280; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.stat-value { font-size: 20px; font-weight: 700; }
+.green  { color: #22c55e; }
+.red    { color: #ef4444; }
+.amber  { color: #F59E0B; }
+.extremes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.ext { background: #141414; border: 1px solid #1F1F1F; border-radius: 10px; padding: 14px; }
+.ext-label { font-size: 10px; color: #6B7280; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.ext-sym { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.ext-val { font-size: 18px; font-weight: 700; }
+.trade-list {
+  background: #141414;
+  border: 1px solid #2E2E2E;
+  border-left: 3px solid #F59E0B;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.tl-label { font-size: 10px; color: #6B7280; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+.tl-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid #1a1a1a; }
+.tl-row:last-child { border-bottom: none; }
+.tl-sym { font-size: 12px; font-weight: 700; }
+.tl-side { font-size: 10px; color: #6B7280; margin-left: 6px; }
+.tl-pnl { font-size: 12px; font-weight: 700; }
+.insights { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.insight { background: #141414; border: 1px solid #1F1F1F; border-radius: 10px; padding: 12px 14px; font-size: 12px; line-height: 1.55; color: #D1D5DB; }
+.footer { display: flex; align-items: center; justify-content: space-between; }
+.disclaimer { font-size: 10px; color: #374151; }
+.channel { font-size: 12px; font-weight: 700; color: #F59E0B; letter-spacing: 0.5px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="label">PRO. Криптотрейдинг</div>
+  <div class="day-badge">ДЕНЬ 3</div>
+</div>
+
+<div class="title">ОБЗОР<br><span class="accent">ВЧЕРА.</span></div>
+<div class="date">17 ИЮНЯ 2026</div>
+
+<div class="divider"></div>
+
+<div class="balance-row">
+  <div class="bal-val">$95.54</div>
+  <div class="bal-today green">+$2.80 за день</div>
+</div>
+<div class="bal-from-start">от старта $90.00 → <span class="bal-accent green">+$5.54 всего</span></div>
+
+<div style="height:14px;"></div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-label">Сделок</div>
+    <div class="stat-value">17</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Win rate</div>
+    <div class="stat-value amber">59%</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Прибыльных</div>
+    <div class="stat-value green">10</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Убыточных</div>
+    <div class="stat-value red">7</div>
+  </div>
+</div>
+
+<div class="extremes">
+  <div class="ext">
+    <div class="ext-label">Лучшая сделка</div>
+    <div class="ext-sym">ETHUSDT</div>
+    <div class="ext-val green">+$6.47</div>
+  </div>
+  <div class="ext">
+    <div class="ext-label">Худшая сделка</div>
+    <div class="ext-sym">WLDUSDT</div>
+    <div class="ext-val red">−$5.67</div>
+  </div>
+</div>
+
+<div class="trade-list">
+  <div class="tl-label">Ключевые сделки дня</div>
+  <div class="tl-row">
+    <div><span class="tl-sym">ETHUSDT</span><span class="tl-side">Long · 22:47</span></div>
+    <div class="tl-pnl green">+$6.47</div>
+  </div>
+  <div class="tl-row">
+    <div><span class="tl-sym">SQDUSDT</span><span class="tl-side">Long · 17:11</span></div>
+    <div class="tl-pnl green">+$2.64</div>
+  </div>
+  <div class="tl-row">
+    <div><span class="tl-sym">BRUSDT</span><span class="tl-side">Short · 16:32</span></div>
+    <div class="tl-pnl green">+$2.62</div>
+  </div>
+  <div class="tl-row">
+    <div><span class="tl-sym">WLDUSDT</span><span class="tl-side">Long · 12:24</span></div>
+    <div class="tl-pnl red">−$5.67</div>
+  </div>
+  <div class="tl-row">
+    <div><span class="tl-sym">HYPEUSDT</span><span class="tl-side">2 сделки</span></div>
+    <div class="tl-pnl red">−$4.40</div>
+  </div>
+</div>
+
+<div class="insights">
+  <div class="insight">📒 День получился активным — 17 сделок. Спас ETHUSDT Long под вечер (+$6.47), без него был бы в минусе. WLD снова съел всю прибыль первой половины дня.</div>
+  <div class="insight">🎯 Меньше контртрендовых входов. WLD и HYPE — болевые точки. Дать ETH и SQD больше пространства, они отрабатывают.</div>
+</div>
+
+<div class="footer">
+  <div class="disclaimer">Данные: Bybit · Не финансовая рекомендация</div>
+  <div class="channel">@pro_crypto_trading</div>
+</div>
+
+</body>
+</html>
