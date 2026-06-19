@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #131722;
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    width: 900px;
+    height: 560px;
+    overflow: hidden;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px 6px;
+    border-bottom: 1px solid #2a2e39;
+  }
+  .symbol { color: #ffffff; font-size: 20px; font-weight: 700; }
+  .exchange { color: #9aa1b0; font-size: 13px; font-weight: 400; }
+  .price { color: #ffffff; font-size: 22px; font-weight: 600; }
+  .change { font-size: 14px; font-weight: 600; color: {{CHANGE_COLOR}}; }
+  .timeframe { color: #9aa1b0; font-size: 12px; margin-left: auto; }
+  .legend {
+    display: flex;
+    gap: 16px;
+    padding: 5px 20px;
+  }
+  .leg-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #c5c8d2; }
+  .leg-dot { width: 24px; height: 2px; border-radius: 1px; }
+  #chart { height: 470px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <div class="symbol">{{SYMBOL}} <span class="exchange">· Bybit Perp</span></div>
+  </div>
+  <div style="margin-left: 16px;">
+    <div class="price">${{CURRENT_PRICE}}</div>
+    <div class="change">{{CHANGE_STR}} ({{TIMEFRAME}})</div>
+  </div>
+  <div class="timeframe">{{TIMEFRAME}} · {{CANDLE_COUNT}} свечей</div>
+</div>
+<div class="legend">
+  <div class="leg-item"><div class="leg-dot" style="background:#f59e0b"></div>EMA 21</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#3b82f6"></div>EMA 50</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#26a69a"></div>Support</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#ef5350"></div>Resistance</div>
+</div>
+<div id="chart"></div>
+<script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js" integrity="sha384-JZigAjwiaZtkUbA44CWkPaT3iBb/mU5pO6QOANp+OqHd4q+1+7MG1kzp2OOP9ZfP" crossorigin="anonymous"></script>
+<script>
+const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+  width: 900,
+  height: 470,
+  layout: {
+    background: { type: 'solid', color: '#131722' },
+    textColor: '#c5c8d2',
+  },
+  grid: {
+    vertLines: { color: '#1e2130' },
+    horzLines: { color: '#1e2130' },
+  },
+  crosshair: { mode: 1 },
+  rightPriceScale: {
+    borderColor: '#363a45',
+    textColor: '#c5c8d2',
+    scaleMargins: { top: 0.05, bottom: 0.05 },
+  },
+  timeScale: {
+    borderColor: '#363a45',
+    textColor: '#c5c8d2',
+    timeVisible: true,
+    secondsVisible: false,
+  },
+});
+
+const candleSeries = chart.addCandlestickSeries({
+  upColor: '#26a69a',
+  downColor: '#ef5350',
+  borderUpColor: '#26a69a',
+  borderDownColor: '#ef5350',
+  wickUpColor: '#26a69a',
+  wickDownColor: '#ef5350',
+});
+candleSeries.setData({{OHLCV_DATA}});
+
+const ema21Series = chart.addLineSeries({ color: '#f59e0b', lineWidth: 1.5, priceLineVisible: false, lastValueVisible: false });
+ema21Series.setData({{EMA21_DATA}});
+
+const ema50Series = chart.addLineSeries({ color: '#3b82f6', lineWidth: 1.5, priceLineVisible: false, lastValueVisible: false });
+ema50Series.setData({{EMA50_DATA}});
+
+// Support zones — rendered as horizontal band (upper + lower line + axis label)
+const supportZones = {{SUPPORT_ZONES}};
+supportZones.forEach((z, i) => {
+  const upper = chart.addLineSeries({ color: 'rgba(38,166,154,0.5)', lineWidth: 1, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false });
+  upper.setData([{ time: {{FIRST_TS}}, value: z.upper }, { time: {{LAST_TS}}, value: z.upper }]);
+  const lower = chart.addLineSeries({ color: 'rgba(38,166,154,0.5)', lineWidth: 1, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false });
+  lower.setData([{ time: {{FIRST_TS}}, value: z.lower }, { time: {{LAST_TS}}, value: z.lower }]);
+  lower.createPriceLine({ price: z.price, color: 'rgba(38,166,154,0)', lineWidth: 0, axisLabelVisible: true, title: `S${i+1} $${z.price.toFixed(4)} (x${z.count})` });
+});
+
+// Resistance zones
+const resistanceZones = {{RESISTANCE_ZONES}};
+resistanceZones.forEach((z, i) => {
+  const upper = chart.addLineSeries({ color: 'rgba(239,83,80,0.5)', lineWidth: 1, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false });
+  upper.setData([{ time: {{FIRST_TS}}, value: z.upper }, { time: {{LAST_TS}}, value: z.upper }]);
+  const lower = chart.addLineSeries({ color: 'rgba(239,83,80,0.5)', lineWidth: 1, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false });
+  lower.setData([{ time: {{FIRST_TS}}, value: z.lower }, { time: {{LAST_TS}}, value: z.lower }]);
+  lower.createPriceLine({ price: z.price, color: 'rgba(239,83,80,0)', lineWidth: 0, axisLabelVisible: true, title: `R${i+1} $${z.price.toFixed(4)} (x${z.count})` });
+});
+
+chart.timeScale().fitContent();
+</script>
+</body>
+</html>
