@@ -2,7 +2,7 @@
 
 {{COMMENT}}
 
-📊 Сделок: {{TRADES_COUNT}} · WR {{WIN_RATE}} · лучшая: {{BEST_SYMBOL}} {{BEST_PNL}}
+📊 Сделок: {{TRADES_COUNT}} · WR {{WIN_RATE}} · лучшая: {{BEST_TRADE}}
 
 📈 Открыта: {{OPEN_POSITIONS}}
 

@@ -94,11 +94,11 @@ body {
   </div>
   <div class="stat">
     <div class="stat-label">Прибыльных</div>
-    <div class="stat-value green">{{TRADES_WIN}}</div>
+    <div class="stat-value {{TRADES_WIN_STYLE}}">{{TRADES_WIN}}</div>
   </div>
   <div class="stat">
     <div class="stat-label">Убыточных</div>
-    <div class="stat-value red">{{TRADES_LOSS}}</div>
+    <div class="stat-value {{TRADES_LOSS_STYLE}}">{{TRADES_LOSS}}</div>
   </div>
 </div>
 
@@ -107,9 +107,9 @@ body {
   <div class="pos-row">
     <div>
       <div class="pos-name">{{OPEN_SYMBOL}}</div>
-      <div class="pos-sub">вход {{OPEN_ENTRY}} · {{OPEN_LEVERAGE}}</div>
+      <div class="pos-sub" style="{{OPEN_DETAIL_STYLE}}">вход {{OPEN_ENTRY}} · {{OPEN_LEVERAGE}}</div>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;">
+    <div style="display:flex;align-items:center;gap:10px;{{OPEN_DETAIL_STYLE}}">
       <div class="pos-badge-{{OPEN_SIDE_STYLE}}">{{OPEN_SIDE}}</div>
       <div class="pos-pnl {{OPEN_PNL_STYLE}}">{{OPEN_PNL}}</div>
     </div>
