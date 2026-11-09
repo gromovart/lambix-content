@@ -1,6 +1,6 @@
 🏁 Итоги дня. День {{DAY}}.
 
-💼 Баланс: {{BALANCE}} ({{PNL_TODAY}} за день, {{FROM_START}})
+💼 Баланс: {{BALANCE}} ({{PNL_TODAY}} за день{{PNL_START_SUFFIX}})
 📊 Сделок: {{TRADES_COUNT}} | Прибыльных: {{TRADES_WIN}} | WR: {{WIN_RATE}}
 
 {{TRADES_TEXT}}
@@ -9,8 +9,6 @@
 
 🌙 {{NIGHT_POSITIONS}}
 
-🎯 Завтра: {{INSIGHT_TOMORROW}}
-
-Данные: BingX live
+{{TOMORROW_BLOCK}}Данные: BingX live
 ⚠️ Не финансовая рекомендация.
 #день{{DAY}} #итоги
