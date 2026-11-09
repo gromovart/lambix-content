@@ -1,0 +1,13 @@
+📋 Полдень. День {{DAY}}.
+
+{{COMMENT}}
+
+📊 Сделок: {{TRADES_COUNT}} · WR {{WIN_RATE}} · лучшая: {{BEST_SYMBOL}} {{BEST_PNL}}
+
+📈 Открыта: {{OPEN_POSITIONS}}
+
+💼 Баланс: {{BALANCE}} ({{FROM_START}})
+
+Данные: BingX live
+⚠️ Не финансовая рекомендация.
+#день{{DAY}} #полдень

@@ -69,9 +69,9 @@ body {
 
 <div class="balance-row">
   <div class="bal-val">{{BALANCE}}</div>
-  <div class="bal-today red">{{PNL_TODAY}} за день</div>
+  <div class="bal-today {{PNL_TODAY_STYLE}}">{{PNL_TODAY}} за день</div>
 </div>
-<div class="bal-from-start">от старта {{START_BALANCE}} → <span class="bal-accent green">{{PNL_TOTAL}}</span></div>
+<div class="bal-from-start">от старта {{START_BALANCE}} → <span class="bal-accent {{PNL_TOTAL_STYLE}}">{{PNL_TOTAL}}</span></div>
 
 <div style="height:14px;"></div>
 
@@ -82,7 +82,7 @@ body {
   </div>
   <div class="stat">
     <div class="stat-label">Win rate</div>
-    <div class="stat-value amber">{{WIN_RATE}}%</div>
+    <div class="stat-value amber">{{WIN_RATE}}</div>
   </div>
   <div class="stat">
     <div class="stat-label">Прибыльных</div>
@@ -114,7 +114,7 @@ body {
       <div class="on-sym">{{NIGHT_SYMBOL}} {{NIGHT_SIDE}} {{NIGHT_LEVERAGE}}</div>
       <div class="on-detail">вход {{NIGHT_ENTRY}} · текущий PnL</div>
     </div>
-    <div class="on-pnl green">{{NIGHT_PNL}}</div>
+    <div class="on-pnl {{NIGHT_PNL_STYLE}}">{{NIGHT_PNL}}</div>
   </div>
 </div>
 
@@ -124,7 +124,7 @@ body {
 </div>
 
 <div class="footer">
-  <div class="disclaimer">Данные: Bybit live · Не финансовая рекомендация</div>
+  <div class="disclaimer">Данные: BingX live · Не финансовая рекомендация</div>
   <div class="channel">@pro_crypto_trading</div>
 </div>
 
