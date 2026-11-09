@@ -82,15 +82,15 @@ body {
   </div>
   <div class="stat">
     <div class="stat-label">Win rate</div>
-    <div class="stat-value amber">{{WIN_RATE}}</div>
+    <div class="stat-value {{WIN_RATE_STYLE}}">{{WIN_RATE}}</div>
   </div>
   <div class="stat">
     <div class="stat-label">Прибыльных</div>
-    <div class="stat-value green">{{TRADES_WIN}}</div>
+    <div class="stat-value {{TRADES_WIN_STYLE}}">{{TRADES_WIN}}</div>
   </div>
   <div class="stat">
     <div class="stat-label">Убыточных</div>
-    <div class="stat-value red">{{TRADES_LOSS}}</div>
+    <div class="stat-value {{TRADES_LOSS_STYLE}}">{{TRADES_LOSS}}</div>
   </div>
 </div>
 
@@ -98,12 +98,12 @@ body {
   <div class="ext">
     <div class="ext-label">Лучшая сделка</div>
     <div class="ext-sym">{{BEST_SYMBOL}}</div>
-    <div class="ext-val green">{{BEST_PNL}}</div>
+    <div class="ext-val {{BEST_PNL_STYLE}}">{{BEST_PNL}}</div>
   </div>
   <div class="ext">
     <div class="ext-label">Худшая сделка</div>
     <div class="ext-sym">{{WORST_SYMBOL}}</div>
-    <div class="ext-val red">{{WORST_PNL}}</div>
+    <div class="ext-val {{WORST_PNL_STYLE}}">{{WORST_PNL}}</div>
   </div>
 </div>
 
@@ -112,9 +112,9 @@ body {
   <div class="on-row">
     <div>
       <div class="on-sym">{{NIGHT_SYMBOL}} {{NIGHT_SIDE}} {{NIGHT_LEVERAGE}}</div>
-      <div class="on-detail">вход {{NIGHT_ENTRY}} · текущий PnL</div>
+      <div class="on-detail" style="{{NIGHT_DETAIL_STYLE}}">вход {{NIGHT_ENTRY}} · текущий PnL</div>
     </div>
-    <div class="on-pnl {{NIGHT_PNL_STYLE}}">{{NIGHT_PNL}}</div>
+    <div class="on-pnl {{NIGHT_PNL_STYLE}}" style="{{NIGHT_DETAIL_STYLE}}">{{NIGHT_PNL}}</div>
   </div>
 </div>
 
