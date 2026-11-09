@@ -4,9 +4,9 @@
 
 📊 Сделок: {{TRADES_COUNT}} · WR {{WIN_RATE}} · лучшая: {{BEST_TRADE}}
 
-📈 Открыта: {{OPEN_POSITIONS}}
+📈 Позиции: {{OPEN_POSITIONS}}
 
-💼 Баланс: {{BALANCE}} ({{FROM_START}})
+💼 Баланс: {{BALANCE}}{{FROM_START_NOTE}}
 
 Данные: BingX live
 ⚠️ Не финансовая рекомендация.

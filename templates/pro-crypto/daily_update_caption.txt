@@ -4,12 +4,8 @@
 
 📌 Позиции: {{POSITIONS}}
 
-💼 Баланс: {{BALANCE}} ({{FROM_START}})
+💼 Баланс: {{BALANCE}}{{FROM_START_NOTE}}
 
-🧠 Состояние: {{STATE}}
-
-💭 На день: {{PLAN}}
-
-Данные: BingX live
+{{STATE_BLOCK}}{{PLAN_BLOCK}}Данные: BingX live
 ⚠️ Не финансовая рекомендация. Делюсь путём как есть.
 #день{{DAY}} #утро

@@ -71,7 +71,7 @@ body {
   <div class="bal-val">{{BALANCE}}</div>
   <div class="bal-today {{PNL_TODAY_STYLE}}">{{PNL_TODAY}} за день</div>
 </div>
-<div class="bal-from-start">от старта {{START_BALANCE}} → <span class="bal-accent {{PNL_TOTAL_STYLE}}">{{PNL_TOTAL}}</span></div>
+<div class="bal-from-start" style="{{START_STYLE}}">от старта {{START_BALANCE}} → <span class="bal-accent {{PNL_TOTAL_STYLE}}">{{PNL_TOTAL}}</span></div>
 
 <div style="height:14px;"></div>
 
@@ -120,7 +120,7 @@ body {
 
 <div class="insights">
   <div class="insight">📒 {{INSIGHT_RESULT}}</div>
-  <div class="insight">🎯 {{INSIGHT_TOMORROW}}</div>
+  <div class="insight" style="{{TOMORROW_STYLE}}">🎯 {{INSIGHT_TOMORROW}}</div>
 </div>
 
 <div class="footer">
