@@ -73,7 +73,7 @@ body {
 
 <div class="header">
   <div class="label">PRO. Криптотрейдинг</div>
-  <div class="time-badge">14:00 МСК</div>
+  <div class="time-badge">{{TIME}} МСК</div>
 </div>
 
 <div class="title">ПОЛДЕНЬ.<br><span class="accent">ДЕНЬ {{DAY}}.</span></div>
@@ -83,7 +83,7 @@ body {
 
 <div class="balance-row">
   <div class="bal-val">{{BALANCE}}</div>
-  <div class="bal-today red">{{PNL_TODAY}} сегодня</div>
+  <div class="bal-today {{PNL_TODAY_STYLE}}">{{PNL_TODAY}} сегодня</div>
 </div>
 <div class="bal-start">старт {{START_BALANCE}}</div>
 
@@ -110,8 +110,8 @@ body {
       <div class="pos-sub">вход {{OPEN_ENTRY}} · {{OPEN_LEVERAGE}}</div>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <div class="pos-badge-long">{{OPEN_SIDE}}</div>
-      <div class="pos-pnl green">{{OPEN_PNL}}</div>
+      <div class="pos-badge-{{OPEN_SIDE_STYLE}}">{{OPEN_SIDE}}</div>
+      <div class="pos-pnl {{OPEN_PNL_STYLE}}">{{OPEN_PNL}}</div>
     </div>
   </div>
 </div>
@@ -122,7 +122,7 @@ body {
 </div>
 
 <div class="footer">
-  <div class="disclaimer">Данные: Bybit live · Не финансовая рекомендация</div>
+  <div class="disclaimer">Данные: BingX live · Не финансовая рекомендация</div>
   <div class="channel">@pro_crypto_trading</div>
 </div>
 

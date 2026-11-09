@@ -115,7 +115,7 @@ body {
 
 <div class="header">
   <div class="label">PRO. Криптотрейдинг</div>
-  <div class="day-badge">ДЕНЬ 2</div>
+  <div class="day-badge">ДЕНЬ {{DAY}}</div>
 </div>
 
 <div class="title">ДОБРОЕ<br><span class="accent">УТРО.</span></div>
@@ -126,25 +126,25 @@ body {
 <div class="stats">
   <div class="stat">
     <div class="stat-label">Баланс</div>
-    <div class="stat-value">$90</div>
+    <div class="stat-value">{{BALANCE}}</div>
   </div>
   <div class="stat">
     <div class="stat-label">От старта</div>
-    <div class="stat-value green">+$8</div>
+    <div class="stat-value {{PNL_TOTAL_STYLE}}">{{PNL_TOTAL}}</div>
   </div>
   <div class="stat">
     <div class="stat-label">Позиции</div>
-    <div class="stat-value muted">Нет</div>
+    <div class="stat-value muted">{{POSITIONS}}</div>
   </div>
 </div>
 
 <div class="market">
   <div class="market-label">Рынок</div>
-  <div class="market-text">BTC $66k · ETH $1 800 · Бычий, но осторожный — откат после роста. Трейдеры фиксируют, рынок выдыхает перед следующим движением.</div>
+  <div class="market-text">{{MARKET_TEXT}}</div>
 </div>
 
 <div class="footer">
-  <div class="disclaimer">Не финансовая рекомендация</div>
+  <div class="disclaimer">Данные: BingX live · Не финансовая рекомендация</div>
   <div class="channel">@pro_crypto_trading</div>
 </div>
 
